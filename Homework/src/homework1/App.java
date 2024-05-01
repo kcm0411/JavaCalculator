@@ -15,9 +15,11 @@ public class App {
         // 변수 선언
         int num1 = 0;
         int num2 = 0;
+        int number;
         String operation;
         String exitYn;
         String removeYn;
+        String findResult;
 
         /* 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다. */
         // int[] resultArray = new int[10];
@@ -96,6 +98,19 @@ public class App {
                     System.out.print(countList.get(i) + " / ");
                 }
 
+            }
+
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            /* 향상된 for문을 활용하여 List 조회 */
+            findResult = sc.next();
+            if (findResult.equals("inquiry")){
+                number = 0;
+                System.out.println("↓↓↓↓↓저장된 결과값↓↓↓↓↓");
+                for (int i : countList) {
+                    number++;
+                    System.out.println(number + ". : " + i);
+                }
+                System.out.println("↑↑↑↑↑저장된 결과값↑↑↑↑↑");
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
