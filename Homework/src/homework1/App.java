@@ -1,10 +1,14 @@
 package homework1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
+
+        /* 적합한 컬렉션 타입의 변수 선언 : List */
+        ArrayList<Integer> countList = new ArrayList<Integer>();
 
         Scanner sc = new Scanner(System.in);
 
@@ -13,9 +17,10 @@ public class App {
         int num2 = 0;
         String operation;
         String exitYn;
+        String removeYn;
 
         /* 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다. */
-        int[] resultArray = new int[10];
+        // int[] resultArray = new int[10];
         /* 연산의 결과가 저장된 배열의 마지막 index를 저장하는 변수를 선언 */
         int count = 0;
 
@@ -47,26 +52,51 @@ public class App {
 
             System.out.println("결과: " + result);
 
-            if (count > 9){
-
-                // 배열이 다 찼으면 저장된 값을 앞으로 한칸씩 당기기
-                for (int j=0; j<8; j++) {
-                    resultArray[j] = resultArray[j+1];
-                }
-                // 배열 마지막 자리에 결과값을 저장한다
-                resultArray[count -1] = result;
-
-            } else {
-
-                // 배열이 다 안찼으면 빈 배열에 저장 후, 배열 Index ++
-                resultArray[count] = result;
-                count++;
-            }
-
+//            if (count > 9){
+//
+//                // 배열이 다 찼으면 저장된 값을 앞으로 한칸씩 당기기
+//                for (int j=0; j<8; j++) {
+//                    resultArray[j] = resultArray[j+1];
+//                }
+//                // 배열 마지막 자리에 결과값을 저장한다
+//                resultArray[count -1] = result;
+//
+//            } else {
+//
+//                // 배열이 다 안찼으면 빈 배열에 저장 후, 배열 Index ++
+//                resultArray[count] = result;
+//                count++;
+//            }
 //            // TEST
 //            for (int k=0; k<10; k++) {
 //                System.out.println(resultArray[k] + " count: " + count);
 //            }
+
+            /* 배열에서 컬렉션으로 변경됨으로써 변경해야하는 부분 구현 */
+            // List에 결과값 저장
+            countList.add(result);
+
+            /* 위 요구사항에 맞게 구현 */
+
+            //저장된 결과값 출력
+            System.out.print(" 저장된 결과값 : ");
+            for (int i = 0; i < countList.size(); i++) {
+                System.out.print(countList.get(i) + " / ");
+            }
+
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            removeYn = sc.next();
+            if (removeYn.equals("remove")){
+
+                // 삭제 후 저잘된 결과값 재출력
+                countList.remove(0);
+
+                System.out.print(" 저장된 결과값 : ");
+                for (int i = 0; i < countList.size(); i++) {
+                    System.out.print(countList.get(i) + " / ");
+                }
+
+            }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             exitYn = sc.next();
