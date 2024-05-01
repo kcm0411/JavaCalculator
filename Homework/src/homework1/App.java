@@ -3,6 +3,7 @@ package homework1;
 import java.util.Scanner;
 
 public class App {
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -12,6 +13,11 @@ public class App {
         int num2 = 0;
         String operation;
         String exitYn;
+
+        /* 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다. */
+        int[] resultArray = new int[10];
+        /* 연산의 결과가 저장된 배열의 마지막 index를 저장하는 변수를 선언 */
+        int count = 0;
 
         /* 반복문 사용 해서 연산을 반복 */
         do {
@@ -40,6 +46,22 @@ public class App {
             }
 
             System.out.println("결과: " + result);
+
+            if (count > 8){
+
+                System.out.println("10번 계산 완료하여 프로그램을 종료합니다.");
+
+            } else {
+
+                // 배열이 다 안찼으면 빈 배열에 저장 후, 배열 Index ++
+                resultArray[count] = result;
+                count++;
+            }
+
+//            // TEST
+//            for (int k=0; k<10; k++) {
+//                System.out.println(resultArray[k] + " count: " + count);
+//            }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             exitYn = sc.next();
