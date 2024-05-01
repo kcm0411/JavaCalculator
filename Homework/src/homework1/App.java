@@ -47,9 +47,14 @@ public class App {
 
             System.out.println("결과: " + result);
 
-            if (count > 8){
+            if (count > 9){
 
-                System.out.println("10번 계산 완료하여 프로그램을 종료합니다.");
+                // 배열이 다 찼으면 저장된 값을 앞으로 한칸씩 당기기
+                for (int j=0; j<8; j++) {
+                    resultArray[j] = resultArray[j+1];
+                }
+                // 배열 마지막 자리에 결과값을 저장한다
+                resultArray[count -1] = result;
 
             } else {
 
