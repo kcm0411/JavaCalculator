@@ -1,6 +1,7 @@
 package homework1;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class App {
@@ -17,9 +18,9 @@ public class App {
         int num2 = 0;
         int number;
         String operation;
-        String exitYn;
-        String removeYn;
-        String findResult;
+        String exitValue;
+        String removeValue;
+        // String findResult; // 개인 과제 해설영상대로 Objects로 받아서 필요없어진 변수
 
         /* 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다. */
         // int[] resultArray = new int[10];
@@ -39,6 +40,10 @@ public class App {
             System.out.print("두 번째 숫자를 입력하세요: ");
             // Scanner를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
             num2 = sc.nextInt();
+
+            if (operation.equals("/") && (num2 == 0)) {
+                System.out.println("0으로 나눌 수 없습니다.");
+            }
 
             int result = 0;
             /* 제어문을 활용하여 위 요구사항을 만족할 수 있게 구현합니다.*/
@@ -87,8 +92,8 @@ public class App {
             }
 
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-            removeYn = sc.next();
-            if (removeYn.equals("remove")){
+            removeValue = sc.next();
+            if (removeValue.equals("remove")){
 
                 // 삭제 후 저잘된 결과값 재출력
                 countList.remove(0);
@@ -102,21 +107,22 @@ public class App {
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             /* 향상된 for문을 활용하여 List 조회 */
-            findResult = sc.next();
-            if (findResult.equals("inquiry")){
+//            findResult = sc.next();
+//            if (findResult.equals("inquiry")){
+            if (Objects.equals(sc.next(),("inquiry"))){
                 number = 0;
                 System.out.println("↓↓↓↓↓저장된 결과값↓↓↓↓↓");
                 for (int i : countList) {
                     number++;
-                    System.out.println(number + ". : " + i);
+                    System.out.println(number + " : " + i);
                 }
                 System.out.println("↑↑↑↑↑저장된 결과값↑↑↑↑↑");
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-            exitYn = sc.next();
+            exitValue = sc.next();
 
-        } while (!exitYn.equals("exit"));
+        } while (!exitValue.equals("exit"));
 
         /* exit을 입력 받으면 반복 종료 */
     }
