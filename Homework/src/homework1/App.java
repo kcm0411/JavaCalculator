@@ -43,6 +43,7 @@ public class App {
 
             if (operation.equals("/") && (num2 == 0)) {
                 System.out.println("0으로 나눌 수 없습니다.");
+                break;
             }
 
             int result = 0;
